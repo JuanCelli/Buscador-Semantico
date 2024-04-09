@@ -1,9 +1,9 @@
 import chromadb
-import re
+import os
+from utils.getRootPath import getRootPath
 from sentence_transformers import SentenceTransformer
-import chromadb.utils.embedding_functions as embedding_functions
 from models.index import getModelDefault
-client = chromadb.PersistentClient(path="../data")
+client = chromadb.PersistentClient(path=os.path.join(getRootPath(), 'data'))
 
 
 def getResponses(query):
@@ -24,11 +24,11 @@ def getResponses(query):
     responses = [
     {
         "title": results["metadatas"][0][i]["title"],
+        "content": results["metadatas"][0][i]["content"],
         "id": results["ids"][0][i],
         "document": results["documents"][0][i],
         "distance": results["distances"][0][i],
     }
     for i in range(len(results["ids"][0]))
 ]
-    print(responses)
     return responses

@@ -12,10 +12,11 @@ def splitFile(file):
 
     # chunks = re.findall(r'(#+ .+?)(?=\n#+ |\Z)', text, flags=re.DOTALL)
     chunks = re.split(r'### |#### |##  |#  ', text)
+    chunks_originals= re.split(r'### |#### |##  |#  ', file)
 
     def format_text(chunk):
         return re.sub(r'\-\-\ ', '', chunk)
 
     result_text = [format_text(chunk) for chunk in chunks]
 
-    return [s.strip() for s in result_text if s.strip()]
+    return [[s.strip() for s in result_text if s.strip()],[s.strip() for s in chunks_originals if s.strip()]]

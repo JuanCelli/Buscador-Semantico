@@ -15,6 +15,5 @@ def cleanText(chunk):
 
     for ignore, replace in replace.items():
         text = re.sub(ignore, replace, chunk, flags=re.MULTILINE)
-        texto_formateado = text.replace('\\n', '\n')
     
-    return texto_formateado
+    return text

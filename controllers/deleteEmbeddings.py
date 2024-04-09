@@ -1,5 +1,7 @@
 import chromadb
-client = chromadb.PersistentClient(path="../data")
+import os
+from utils.getRootPath import getRootPath
+client = chromadb.PersistentClient(path=os.path.join(getRootPath(), 'data'))
 
 
 def deleteCollection(nameCollection):
