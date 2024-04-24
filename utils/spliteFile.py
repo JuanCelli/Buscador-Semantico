@@ -1,5 +1,7 @@
 import re
 def splitFile(file):
+    # Podemos colocar terminos que queremos reemplazar en el texto.
+    # Ej: En este caso reemplazamos la palabra "COMPLETAR" con string vacio, podemos agregar más palabras o expresiones
     ignores = {
         "COMPLETAR":"",
     }
@@ -10,7 +12,6 @@ def splitFile(file):
 
     text = text.lower()
 
-    # chunks = re.findall(r'(#+ .+?)(?=\n#+ |\Z)', text, flags=re.DOTALL)
     chunks = re.split(r'### |#### |##  |#  ', text)
     chunks_originals= re.split(r'### |#### |##  |#  ', file)
 

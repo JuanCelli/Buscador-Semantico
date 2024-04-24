@@ -1,5 +1,4 @@
 import chromadb
-import re
 import os
 from sentence_transformers import SentenceTransformer
 import chromadb.utils.embedding_functions as embedding_functions
@@ -8,9 +7,10 @@ import chromadb.utils.embedding_functions as embedding_functions
 from utils.openFileMd import openFileMd
 from utils.spliteFile import splitFile
 from utils.getMetaDatas import getMetaDatas
-from utils.splitTitles import splitTitles
 from models.index import getModelDefault
 from utils.getRootPath import getRootPath
+
+nameFile = "sample.md"
 
 
 
@@ -22,7 +22,7 @@ def createEmbeddings():
             metadata={"hnsw:space": "cosine"}
     )
 
-    fileRoute = os.path.join(getRootPath(), 'samples', 'archivo_v3.md')
+    fileRoute = os.path.join(getRootPath(), 'samples', nameFile)
 
 
     array = splitFile(openFileMd(fileRoute))[0]
